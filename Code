@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+double fox;
+double goose;
+double Pfox;
+double Pgoose;
+const double DEATH_RATE = 0.1;
+const double CONVERSION_RATE = 0.00001;
+const double GROWTH_RATE = 0.4;
+const double FOX_ABILITY = 0.0005;
+const double CAPACITY = 30000.0;
+int main() {
+
+	cout << "whats the Fox Population?  " << endl;
+	cin >> fox;
+	cout << "whats the Goose Population" << endl;
+	cin >> goose;
+	for (int i = 0; i < 101; i++) {
+
+		if (i % 10 == 0) {
+			cout << "Year  " << i << endl;
+			cout << "Gooses " << goose << endl;
+			cout << "Foxes " << fox << endl;
+
+		}
+		Pgoose = goose;
+		Pfox = fox;
+
+		fox = int((1 - DEATH_RATE + CONVERSION_RATE * Pgoose) * Pfox);
+		goose = int((1 + GROWTH_RATE - GROWTH_RATE * Pgoose / CAPACITY - FOX_ABILITY * Pfox) * Pgoose);
+	}
+
+
+
+
+}
